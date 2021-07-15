@@ -1,0 +1,20 @@
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Category ID</th>
+            <th>Units In Stock</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of products">
+            <td>{{item.productId}}</td>
+            <td>{{item.productName}}</td>
+            <td>{{item.categoryId}}</td>
+            <td>{{item.unitsInStock}}</td>
+            <td>{{item.unitPrice}}</td>
+        </tr>
+    </tbody>
+</table>
