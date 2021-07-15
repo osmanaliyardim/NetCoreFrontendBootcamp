@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { ProductResponseModel } from 'src/app/models/productResponseModel';
+import { ProductService } from 'src/app/services/product.service';
+
+//axios, fetch -> React'ta httpclient için kullanılanlar
 
 @Component({
   selector: 'app-product',
@@ -7,17 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  product: any = { productId: 1, productName: 'Bardak', categoryId: 1, unitsInStock: 10, unitPrice: 15 };
-  product2 = { productId: 2, productName: 'Laptop', categoryId: 1, unitsInStock: 10, unitPrice: 15 };
-  product3 = { productId: 3, productName: 'Mouse', categoryId: 1, unitsInStock: 10, unitPrice: 15 };
-  product4: any = { productId: 4, productName: 'Keyboard', categoryId: 1, unitsInStock: 10, unitPrice: 15 };
-  product5 = { productId: 5, productName: 'Camera', categoryId: 1, unitsInStock: 10, unitPrice: 15 };
+  products:Product[] = [];
+  dataLoaded = false;
 
-  products = [this.product, this.product2, this.product3, this.product4, this.product5];
-
-  constructor() { }
+  constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts() {
+    //Asenkron çalışmaları subscribe ile hallediyoruz
+    this.productService.getProducts().subscribe(response=>{
+      this.products = response.data
+      this.dataLoaded = true;
+    })
   }
 
 }
