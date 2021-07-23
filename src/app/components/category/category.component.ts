@@ -41,7 +41,7 @@ export class CategoryComponent implements OnInit {
     }
   }
 
-  setCurrentCategoryAll(){
+  /*setCurrentCategoryAll(){
     //this.currentCategory={} as Category;
     //this.currentCategory=<Category>{};
     this.currentCategory= {categoryId:0,categoryName:"Tüm Ürünler"};
@@ -53,5 +53,5 @@ export class CategoryComponent implements OnInit {
     }else{
       return "list-group-item"
     }
-  }
+  }*/
 }
